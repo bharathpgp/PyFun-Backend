@@ -4,23 +4,22 @@ from utils import fields_generate
 
 route = {
     'type': blank_form,
-    'url': '/stage/one/hello_python',
+    'url': '/stage/one/while_loop',
     'methods': ['GET', 'POST']
 }
 
 data = {
-    'title': 'Hello Python',
-    'author': 'Official',
-    'image': 'https://community-cdn-digitalocean-com.global.ssl.fastly.net/' +
-             'assets/tutorials/images/large/' +
-             'EBOOK_PYTHON_no-name.png?1516826609',
+    'title': 'While Loop',
+    'author': 'rozig',
     'description': [
-        'Hello there!',
-        'I see that you are a new face!',
-        'Try to say Hello to me!'
+        'Let\'s print 1 to 10 in ascending order.',
+        'Fill the missing fields!'
     ],
     'code': [
-        '_____(\'_____\')'
+        'indicator = 10',
+        '_____ 0 < indicator:',
+        '    print(_____)',
+        '    indicator -= 1'
     ],
     'fields': []
 }
@@ -41,6 +40,11 @@ def answer(stdout, stderr):
         if stderr != []:
             return False
         else:
-            return stdout[0].decode() == 'Hello Python\n'
+            ans = ['10\n', '9\n', '8\n', '7\n', '6\n', '5\n',
+                   '4\n', '3\n', '2\n', '1\n']
+            for each in range(0, 10):
+                if stdout[each].decode() != ans[each]:
+                    return False
+            return True
     except Exception:
         return False
